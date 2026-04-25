@@ -4,123 +4,98 @@
 // ============================================================
 
 export const site = {
-  brand: "yourname.",
-  name: "Your Name",
-  location: "City, State",
-  tagline: "Software engineer. I build AI-powered products and the systems underneath them.",
-  bio: "About a decade of shipping software — startups, big co's, and for the last year, working solo on a pile of things I make for myself. Lately the work is split between products with real users and agents that can run them without me watching.",
+  brand: "aashish.",
+  name: "Aashish Kumar",
+  location: "Seattle, WA",
+  tagline: "Backend software engineer. I build scalable services and high-throughput data pipelines on AWS.",
+  bio: "Five plus years shipping production backends — most recently on Amazon's Payments org, before that healthcare and public-sector platforms. End-to-end ownership is the part I care about: system design, infrastructure-as-code, observability, and the on-call that comes with it.",
   stats: [
-    { value: "10",  label: "Projects shipped" },
-    { value: "8",   label: "Commits · this week" },
-    { value: "232", label: "Agent actions · 24h" },
+    { value: "5+",   label: "Years in production" },
+    { value: "1M+",  label: "Records / day processed" },
+    { value: "1K+",  label: "Engineers using my tools" },
   ],
   socials: {
-    github:   "https://github.com/yourhandle",
-    linkedin: "https://linkedin.com/in/yourhandle",
-    x:        "https://x.com/yourhandle",
-    email:    "mailto:you@example.com",
-    resume:   "#", // link to your resume PDF
+    github:   "https://github.com/aashishkumar96",
+    linkedin: "https://linkedin.com/in/aashishkumar96",
+    email:    "mailto:kumaraashish0796@gmail.com",
+    resume:   "/AashishKumar_Resume.pdf", // place the PDF at public/AashishKumar_Resume.pdf and this link will work
   },
 }
 
 // ------------------------------------------------------------
 //  LIVE ACTIVITY FEED (shown at the bottom of the hero)
-//  Static for now — wire up to real data later if you want.
+//  Static for now — simple "recent work" highlights.
 // ------------------------------------------------------------
 export const activity = {
   todayCommits: 0,
-  agentActions: 3,
+  agentActions: 0,
   items: [
-    { text: "Commented on Moltbook",                  time: "2h ago", actor: null },
-    { text: "Posted to Moltbook",                     time: "2h ago", actor: null },
-    { text: "All systems nominal — no action needed", time: "2h ago", actor: "Conductor" },
+    { text: "Shipped GenAI log-analysis automation at Amazon",    time: "recent",    actor: "AWS" },
+    { text: "Authored internal prompt adopted by 1K+ engineers",   time: "2025",      actor: "CloudCover" },
+    { text: "Led design of batch platform processing 1M+/day",    time: "2025",      actor: "Amazon Payments" },
   ],
 }
 
 // ------------------------------------------------------------
 //  PROJECTS  (tabbed carousel section)
-//  Add as many as you want — the tabs auto-generate.
+//  Built from the strongest initiatives on your resume.
+//  Add personal / GitHub projects here later to grow the list.
 // ------------------------------------------------------------
 export const projectsIntro = {
   eyebrow: "Work",
-  title: "Ten projects I built and still think about.",
-  subtitle: "Some are products people use every day. Some are internal tools I got tired of re-writing. Most started with a problem I had on a Saturday.",
+  title: "Systems I built and still think about.",
+  subtitle: "Each one started with a hard problem — partner files arriving out of order, healthcare APIs crawling, engineers writing the same onboarding doc for the fifth time. These are the ones I'd build again.",
 }
 
 export const projects = [
   {
-    name: "FaB Stats",
-    tagline: "A stats site and Discord bot for the Flesh and Blood TCG community.",
-    meta: "Solo · 2024–Present",
-    visit: "https://example.com",
+    name: "Batch Processing Platform",
+    tagline: "A horizontally-scalable Java batch platform processing 1M+ records a day for Amazon Payments.",
+    meta: "Amazon Payments · 2025",
+    visit: "#",
     body: [
-      "Flesh and Blood is a card game I play. The community kept arguing about the meta — what heroes are winning, what matchups are rough — without real data to back it up, so I started logging match data to answer the questions myself.",
-      "It grew into a Chrome extension that imports whole tournament brackets in one click, a Discord bot living in community servers, and a rotating set of daily puzzle minigames that people play in the morning while they wait for coffee.",
+      "Partner batch files arrive on their own schedule, in their own shape, and occasionally not at all. The platform I led design on ingests them, validates them, retries the pieces that fail, and isolates the failures that don't — so one bad file doesn't poison the rest of the run.",
+      "Built on AWS Step Functions, Lambda, DynamoDB, and S3 with idempotent processing so partial-failure recovery is predictable rather than exciting. CloudWatch watches the whole pipeline and pages us when a partner file is late or malformed before the SLA is at risk.",
     ],
   },
   {
-    name: "Old Ways Today",
-    tagline: "A wellness site about non-toxic living and the agent stack I use here.",
-    meta: "Solo · 2025",
-    visit: "https://example.com",
+    name: "GenAI Incident Response",
+    tagline: "LLM-driven log analysis that writes the first draft of an incident ticket, not the engineer.",
+    meta: "Amazon Payments · 2025",
+    visit: "#",
     body: [
-      "Old Ways Today was the first place I took this portfolio and pointed it at a real product — a curated knowledge base about non-toxic home goods and product recommendations.",
-      "It's a FastAPI backend and Next.js frontend with PostgreSQL for blog and product data, all written and maintained by the same agent stack that runs this site.",
+      "On-call engineers spend the first ten minutes of every page re-reading the same CloudWatch queries. This tool reads the logs for them: it clusters recent errors, correlates them with deploys, and drafts an incident summary pre-filled into the ticketing system.",
+      "The integration cut mean-time-to-first-response meaningfully and, more quietly, turned a chunk of 3am toil into a 30-second triage.",
     ],
   },
   {
-    name: "Bench Only",
-    tagline: "A readable GraphQL client that makes API debugging feel like reading prose.",
-    meta: "Solo · 2024",
-    visit: "https://example.com",
+    name: "CloudCover Onboarding Prompt",
+    tagline: "An internal GenAI prompt, adopted across 1K+ engineers, that audits test coverage before code review.",
+    meta: "Amazon · 2025",
+    visit: "#",
     body: [
-      "Scribe fills the gap — it runs queries via GraphQL, groups them by intent, and turns the response into a narrative technical post that explains what happened and why.",
-      "Useful when you're reviewing API changes across deploys and need the post summary answering \"what did you build this week\" without opening twelve tabs.",
+      "Teams kept onboarding services into CloudCover and discovering coverage gaps in review — expensive and late. I authored and maintained a prompt that reads a service's unit and integration tests, finds the uncovered paths, and surfaces the gaps up front.",
+      "Over a thousand engineers now use it as part of their pre-review flow. Teams that adopt it regularly clear 70% coverage without a fight.",
     ],
   },
   {
-    name: "RowCrew",
-    tagline: "A scheduling tool for small crews with rotating shifts.",
-    meta: "Solo · 2023",
-    visit: "https://example.com",
+    name: "Oklahoma Healthcare Provider Portal",
+    tagline: "Spring Boot microservices behind a statewide portal used daily by healthcare professionals.",
+    meta: "Gainwell Technologies · 2022–2025",
+    visit: "#",
     body: [
-      "Built for a friend running a rowing team. Handles rotating shifts, substitutions, and a little nudging bot that texts people the night before their row.",
+      "Provider workflows — patient data retrieval, eligibility validation, reporting — are the boring, critical parts of healthcare IT. I built and maintained the Java Spring Boot services underneath them.",
+      "A focused pass on query optimization, indexing, and service-layer caching for the hot endpoints brought API performance up 30%. Also mentored an intern end-to-end on their first production feature, which was the more rewarding half.",
     ],
   },
   {
-    name: "Spell Brigade",
-    tagline: "A co-op deckbuilder prototype for 2–4 players.",
-    meta: "Solo · 2023",
-    visit: "https://example.com",
+    name: "Statewide Vaccination Backend",
+    tagline: "ASP.NET Core services for a statewide COVID-19 vaccination platform during peak rollout.",
+    meta: "DXC Technology · 2019–2022",
+    visit: "#",
     body: [
-      "A weekend prototype that kept growing. Multiplayer over websockets, a card drafting engine, and a hand-drawn art direction that came out of not wanting to learn 3D modeling.",
-    ],
-  },
-  {
-    name: "EmbedRoute",
-    tagline: "Semantic router for LLM pipelines, open-source.",
-    meta: "Solo · 2023",
-    visit: "https://example.com",
-    body: [
-      "A tiny library for routing user intents to the right tool or prompt based on embedding similarity. Used it internally for a year before cleaning it up and releasing it.",
-    ],
-  },
-  {
-    name: "Moltbook Agent",
-    tagline: "A journaling agent that turns my notes into publishable essays.",
-    meta: "Solo · 2025",
-    visit: "https://example.com",
-    body: [
-      "Reads a month of morning pages, clusters the recurring threads, and drafts the two or three essays hiding in them. I edit; it drafts.",
-    ],
-  },
-  {
-    name: "Launchpad",
-    tagline: "A dashboard for all my side projects in one place.",
-    meta: "Solo · 2024",
-    visit: "https://example.com",
-    body: [
-      "Pulls uptime, revenue, and user counts across every side project. Saved me from the \"wait, is that one still up?\" problem.",
+      "Ingestion, validation, and analytics workloads for a statewide vaccination platform during the period when \"can the system stay up\" was a genuine question. Wrote the backend services in ASP.NET Core, with secure authentication and encryption patterns layered in from day one.",
+      "Indexing and query work on the high-traffic read endpoints picked up about 25% throughput — modest sounding, material at the scale it was running at.",
     ],
   },
 ]
@@ -135,40 +110,40 @@ export const jobsIntro = {
 
 export const jobs = [
   {
-    company: "Company One",
-    role: "Software Engineer II",
-    period: "2018–2022",
-    logo: { letter: "C", bg: "#E91E63" }, // background color of the avatar tile
-    accent: "#E91E63",
-    description: "Built an internal automation platform that consolidated 4-5 separate tools into a single interface, reducing manual work for network operations teams by over 80%. Migrated the frontend from Django templates to Angular.",
-    stack: ["Python", "Django", "Angular", "PostgreSQL", "GitLab CI/CD"],
+    company: "Amazon (via TEKsystems)",
+    role: "Software Development Engineer II",
+    period: "2025–2026",
+    logo: { letter: "A", bg: "#FF9900" },
+    accent: "#FF9900",
+    description: "Led design of a Java batch platform processing 1M+ records daily on Step Functions, Lambda, DynamoDB, and S3. Built CDK infrastructure-as-code, CloudWatch-driven SLA monitoring, and GenAI log-analysis automation integrated with ticketing. Authored an internal prompt adopted by 1K+ engineers that drives teams to 70%+ code coverage.",
+    stack: ["Java", "AWS CDK", "Step Functions", "Lambda", "DynamoDB", "S3", "TypeScript", "CloudWatch"],
   },
   {
-    company: "Company Two",
-    role: "Senior Software Engineer",
-    period: "2022–2023",
-    logo: { letter: "C", bg: "#0F5FA8" },
+    company: "Gainwell Technologies",
+    role: "Software Development Engineer",
+    period: "2022–2025",
+    logo: { letter: "G", bg: "#0F5FA8" },
     accent: "#3B82F6",
-    description: "Designed a JSON schema system for automated email testing — new test cases added without code changes. Definitions stored in S3, executed via Lambda, results piped to CloudWatch. Mentored intern to production deployment.",
-    stack: ["AWS Lambda", "S3", "CloudWatch", "Python", "JSON Schema"],
+    description: "Shipped Spring Boot microservices powering a statewide healthcare provider portal for Oklahoma. Improved API performance by 30% via query optimization, indexing, and caching. Designed relational and NoSQL schemas across MySQL and DynamoDB, and mentored an intern through their first production feature.",
+    stack: ["Java", "Spring Boot", "MySQL", "DynamoDB", "REST APIs"],
   },
   {
-    company: "Side Project",
-    role: "Autonomous Trading · Solo",
-    period: "2021",
-    logo: { letter: "S", bg: "#6B7280" },
+    company: "DXC Technology",
+    role: "Associate Software Developer",
+    period: "2019–2022",
+    logo: { letter: "D", bg: "#5F249F" },
     accent: "#A78BFA",
-    description: "Fully autonomous bidding system distributed across 50 machines, tracking every collection on a public marketplace in real-time. Adapted daily to stay profitable over 6 months in a bot-vs-bot arms race.",
-    stack: ["Node.js", "Redis", "Marketplace SDK", "Docker", "Web3.js"],
+    description: "Built ASP.NET Core backend services for a statewide COVID-19 vaccination platform — ingestion, validation, analytics, and secure auth. Lifted DB performance by 25% with indexing and query tuning on high-traffic endpoints.",
+    stack: ["C#", "ASP.NET Core", "SQL", "REST APIs"],
   },
   {
-    company: "Early Startup",
-    role: "Co-founder & Engineer · Startup",
-    period: "2017–2018",
-    logo: { letter: "S", bg: "#1F2937" },
+    company: "University of Washington",
+    role: "B.S. Computer Science",
+    period: "2015–2019",
+    logo: { letter: "W", bg: "#4B2E83" },
     accent: "#34D399",
-    description: "Real-time weightlifting form analyzer using Kinect — 25 joints at 30fps, scored against expert references. Led a team of 5 through an ACM CHI publication and startup competitions.",
-    stack: ["C#", "Kinect SDK", "Computer Vision", "Unity"],
+    description: "Undergraduate degree in Computer Science. Graduated June 2019, moving directly into full-time backend engineering work the following month.",
+    stack: ["Algorithms", "Systems", "Distributed Computing"],
   },
 ]
 
@@ -176,64 +151,56 @@ export const jobs = [
 //  SCHOOL & HONORS
 // ------------------------------------------------------------
 export const schoolIntro = {
-  eyebrow: "School",
-  title: "Degrees, and a couple of things I'm proud of.",
+  eyebrow: "School & Skills",
+  title: "Degree, and the tools I reach for.",
 }
 
 export const degrees = [
   {
-    name: "M.S. Software Engineering",
-    school: "Your Graduate School",
-    year: "2021",
-    note: "Completed while working full-time",
-  },
-  {
     name: "B.S. Computer Science",
-    school: "Your Undergrad School",
-    year: "2017",
-    note: "Graduated with Honors · Teaching Assistant · President, Coding Club",
+    school: "University of Washington, Seattle",
+    year: "2019",
+    note: "Moved straight from graduation into production backend work.",
   },
 ]
 
+// Repurposed the right column from "Honors" to "Stack" — a clean way to surface
+// your technical skills without adding a whole new section.
 export const honors = [
-  { label: "1st Place",      org: "Hackathon Name",           note: "Auto-tagging tool" },
-  { label: "Finalist",       org: "Another Hackathon",        note: "Presented at a conference" },
-  { label: "Published",      org: "ACM CHI 2017",             note: "Computer vision for fitness applications" },
-  { label: "Head Organizer", org: "Regional Hackathon 2017",  note: "Coordinated sponsors and judges" },
+  { label: "Languages",          org: "Java, Python, C#, TypeScript",                            note: "Java is home; TypeScript for IaC." },
+  { label: "Backend",             org: "Spring Boot, ASP.NET Core, Microservices, REST",          note: "Distributed systems, API-driven architectures." },
+  { label: "Cloud & DevOps",      org: "AWS (CDK, Lambda, DynamoDB, S3, Step Functions, EC2, RDS)", note: "Also Docker, Jenkins, Git." },
+  { label: "Datastores",          org: "DynamoDB, PostgreSQL, MySQL, Redis",                      note: "Schema design, indexing, migrations." },
+  { label: "Testing & Tooling",   org: "JUnit, Mockito, Integration Testing",                     note: "Observability, GenAI tooling, prompt engineering." },
 ]
 
 // ------------------------------------------------------------
-//  COLOPHON  (the "how this site runs" section)
+//  COLOPHON  (repurposed as a simple "about this site" footer)
+//  Kept the section because the design hangs together with it.
+//  You can remove it later by deleting the <Colophon /> line in App.jsx.
 // ------------------------------------------------------------
 export const colophonIntro = {
   eyebrow: "Colophon",
-  title: "Most of this site is written by agents.",
-  subtitle: "Not just for show — the same stack I ship in production runs this portfolio. The blog, the chatbot, and the activity feed you scrolled past are all live systems, not mocked content.",
+  title: "About this site.",
+  subtitle: "Built with React, Vite, and Motion. Typography is Fraunces for display, Inter for body, and JetBrains Mono for metadata. Deployed on Vercel, source on GitHub.",
 }
 
-// The flow diagram shown in the colophon.
-// Each row is a pipeline: [source] → [agent] → [target list]
+// Simplified flow: just shows the stack, honest and quiet.
 export const colophonFlows = [
   {
-    source:  { label: "Visitor",   color: "coral"  },
-    agent:   { label: "Your AI",   color: "cream"  },
-    handoff: { label: "MCP",       color: "cream"  },
-    targets: ["BenchPress", "RowCrew", "FaB Stats", "Old Ways", "…"],
-  },
-  {
-    source:  { label: "CRON · 3H", color: "sage"   },
-    agent:   { label: "Conductor", color: "violet" },
-    handoff: null,
-    targets: ["Scribe", "Moltbook agent", "Medic"],
+    source:  { label: "React",    color: "coral"  },
+    agent:   { label: "Vite",     color: "cream"  },
+    handoff: { label: "Vercel",   color: "cream"  },
+    targets: ["Static build", "Global CDN", "Auto-deploy on push"],
   },
 ]
 
 export const colophonAgents = [
   {
-    name: "Scribe",
-    description: "Reads yesterday's commits off GitHub GraphQL at 5pm UTC, asks Claude (via an API) to turn them into a narrative post, and publishes.",
-    link: "#",
-    linkLabel: "Latest post",
-    logo: { letter: "S", bg: "#CA9A3E" },
+    name: "Source on GitHub",
+    description: "The code for this site is public. Every push to main auto-deploys through Vercel.",
+    link: "https://github.com/aashishkumar96/Portfolio",
+    linkLabel: "View repo",
+    logo: { letter: "G", bg: "#1F2937" },
   },
 ]
