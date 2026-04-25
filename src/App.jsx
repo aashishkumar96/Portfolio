@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { Github, Linkedin, Twitter, ArrowUpRight, ArrowRight, ChevronLeft, ChevronRight, FileText } from 'lucide-react'
+import { Github, Linkedin, ArrowUpRight, ArrowRight, ChevronLeft, ChevronRight, FileText } from 'lucide-react'
 import {
   site, activity,
   projectsIntro, projects,
@@ -100,7 +100,6 @@ function Nav() {
       <div className="nav__socials">
         <a href={site.socials.github}   aria-label="GitHub"><Github   size={18} strokeWidth={1.5} /></a>
         <a href={site.socials.linkedin} aria-label="LinkedIn"><Linkedin size={18} strokeWidth={1.5} /></a>
-        <a href={site.socials.x}        aria-label="X"><Twitter  size={18} strokeWidth={1.5} /></a>
       </div>
     </nav>
   )
@@ -344,7 +343,7 @@ function School() {
 
           <Reveal delay={100}>
             <div>
-              <div className="honors__head">Honors</div>
+              <div className="honors__head">Stack</div>
               <div className="honors__list">
                 {honors.map((h, idx) => (
                   <div key={idx} className="honor">
