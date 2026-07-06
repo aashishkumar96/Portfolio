@@ -7,72 +7,83 @@ export const site = {
   brand: "aashish.",
   name: "Aashish Kumar",
   location: "Seattle, WA",
-  tagline: "Backend software engineer. I build scalable services and high-throughput data pipelines on AWS.",
-  bio: "Five plus years shipping production backends — most recently on Amazon's Payments org, before that healthcare and public-sector platforms. End-to-end ownership is the part I care about: system design, infrastructure-as-code, observability, and the on-call that comes with it.",
+  tagline: "Senior backend engineer. I build scalable, cloud-native services, high-throughput data pipelines, and production GenAI/RAG systems.",
+  bio: "Five-plus years shipping production backends — most recently at Amazon Payments, building batch platforms processing 1M+ records daily and internal AI tooling adopted by 1K+ engineers. Before that, healthcare and public-sector platforms across Java, Python, and .NET. End-to-end ownership is the part I care about: system design, infra-as-code, observability, and the on-call that comes with it.",
   stats: [
-    { value: "5+",   label: "Years in production" },
-    { value: "1M+",  label: "Records / day processed" },
-    { value: "1K+",  label: "Engineers using my tools" },
+    { value: "5+",  label: "Years in production" },
+    { value: "1M+", label: "Records / day processed" },
+    { value: "1K+", label: "Engineers using my tools" },
   ],
   socials: {
     github:   "https://github.com/aashishkumar96",
     linkedin: "https://linkedin.com/in/aashishkumar96",
     email:    "mailto:kumaraashish0796@gmail.com",
-    resume:   "/AashishKumar_Resume.pdf", // place the PDF at public/AashishKumar_Resume.pdf and this link will work
+    resume:   "/AashishKumar_Resume.pdf",
   },
 }
 
 // ------------------------------------------------------------
-//  LIVE ACTIVITY FEED (shown at the bottom of the hero)
-//  Static for now — simple "recent work" highlights.
+//  LIVE ACTIVITY FEED
 // ------------------------------------------------------------
 export const activity = {
   todayCommits: 0,
   agentActions: 0,
   items: [
-    { text: "Shipped GenAI log-analysis automation at Amazon",    time: "recent",    actor: "AWS" },
-    { text: "Authored internal prompt adopted by 1K+ engineers",   time: "2025",      actor: "CloudCover" },
-    { text: "Led design of batch platform processing 1M+/day",    time: "2025",      actor: "Amazon Payments" },
+    { text: "Shipped RAG knowledge assistant at Amazon Payments",       time: "2025", actor: "Amazon Bedrock" },
+    { text: "Launched Applyloop — AI job autofill platform for India",  time: "2025", actor: "Side Project" },
+    { text: "Led design of batch platform processing 1M+ records/day",  time: "2025", actor: "Amazon Payments" },
   ],
 }
 
 // ------------------------------------------------------------
-//  PROJECTS  (tabbed carousel section)
-//  Built from the strongest initiatives on your resume.
-//  Add personal / GitHub projects here later to grow the list.
+//  PROJECTS
 // ------------------------------------------------------------
 export const projectsIntro = {
   eyebrow: "Work",
   title: "Systems I built and still think about.",
-  subtitle: "Each one started with a hard problem — partner files arriving out of order, healthcare APIs crawling, engineers writing the same onboarding doc for the fifth time. These are the ones I'd build again.",
+  subtitle: "Each one started with a hard problem — partner files arriving out of order, healthcare APIs crawling, engineers waiting 30 minutes to fill a job form. These are the ones I'd build again.",
 }
 
 export const projects = [
   {
+    name: "Applyloop",
+    tagline: "An India-focused AI job application platform that fills any form in 30 seconds and attaches a tailored resume PDF automatically.",
+    meta: "Solo · 2025 · applyloop.in",
+    github: "https://github.com/aashishkumar96/applyloop-in",
+    githubExt: "https://github.com/aashishkumar96/applyloop-extension",
+    body: [
+      "Indian job seekers were spending 30 minutes on every application — copy-pasting the same details into Naukri, Greenhouse, Lever, and 200+ company career pages, each with its own field naming and CTC-in-LPA quirks. Applyloop fixes that: a Chrome extension that discovers every fillable field using 7 label-extraction strategies, fills them from a saved profile, and calls an AI fallback for open-ended questions.",
+      "The backend is FastAPI + Python on Render (Singapore region for India latency), with a Gemini → Groq → OpenRouter fallback chain so the free LLM tier covers all users until meaningful scale. Resume tailoring runs through an ATS match scorer and an AI rewriter that renders a fresh PDF per job. The extension attaches it via the DataTransfer API — the only method browsers accept as a genuine file upload.",
+    ],
+  },
+  {
     name: "Batch Processing Platform",
     tagline: "A horizontally-scalable Java batch platform processing 1M+ records a day for Amazon Payments.",
     meta: "Amazon Payments · 2025",
-    visit: "#",
+    github: null,
+    githubExt: null,
     body: [
       "Partner batch files arrive on their own schedule, in their own shape, and occasionally not at all. The platform I led design on ingests them, validates them, retries the pieces that fail, and isolates the failures that don't — so one bad file doesn't poison the rest of the run.",
       "Built on AWS Step Functions, Lambda, DynamoDB, and S3 with idempotent processing so partial-failure recovery is predictable rather than exciting. CloudWatch watches the whole pipeline and pages us when a partner file is late or malformed before the SLA is at risk.",
     ],
   },
   {
-    name: "GenAI Incident Response",
-    tagline: "LLM-driven log analysis that writes the first draft of an incident ticket, not the engineer.",
+    name: "RAG Knowledge Assistant",
+    tagline: "An internal AI assistant that lets payment-operations agents query policy, compliance, and runbook docs in natural language.",
     meta: "Amazon Payments · 2025",
-    visit: "#",
+    github: null,
+    githubExt: null,
     body: [
-      "On-call engineers spend the first ten minutes of every page re-reading the same CloudWatch queries. This tool reads the logs for them: it clusters recent errors, correlates them with deploys, and drafts an incident summary pre-filled into the ticketing system.",
-      "The integration cut mean-time-to-first-response meaningfully and, more quietly, turned a chunk of 3am toil into a 30-second triage.",
+      "Support agents were losing minutes per query digging through internal wikis. I built a RAG pipeline on Amazon Bedrock: document ingestion, chunking, embedding generation, and semantic search, wired to a chat interface. Hybrid search with reranking and metadata filtering cut hallucinated responses to near zero on operational queries.",
+      "The same architecture underpins an MCP-integrated agent that autonomously generates integration tests across critical service boundaries — another internal tool that started as a prototype and ended up in daily use.",
     ],
   },
   {
     name: "CloudCover Onboarding Prompt",
-    tagline: "An internal GenAI prompt, adopted across 1K+ engineers, that audits test coverage before code review.",
+    tagline: "An internal GenAI prompt adopted by 1K+ engineers that audits test coverage before code review.",
     meta: "Amazon · 2025",
-    visit: "#",
+    github: null,
+    githubExt: null,
     body: [
       "Teams kept onboarding services into CloudCover and discovering coverage gaps in review — expensive and late. I authored and maintained a prompt that reads a service's unit and integration tests, finds the uncovered paths, and surfaces the gaps up front.",
       "Over a thousand engineers now use it as part of their pre-review flow. Teams that adopt it regularly clear 70% coverage without a fight.",
@@ -82,26 +93,28 @@ export const projects = [
     name: "Oklahoma Healthcare Provider Portal",
     tagline: "Spring Boot microservices behind a statewide portal used daily by healthcare professionals.",
     meta: "Gainwell Technologies · 2022–2025",
-    visit: "#",
+    github: null,
+    githubExt: null,
     body: [
-      "Provider workflows — patient data retrieval, eligibility validation, reporting — are the boring, critical parts of healthcare IT. I built and maintained the Java Spring Boot services underneath them.",
-      "A focused pass on query optimization, indexing, and service-layer caching for the hot endpoints brought API performance up 30%. Also mentored an intern end-to-end on their first production feature, which was the more rewarding half.",
+      "Provider workflows — patient data retrieval, eligibility validation, reporting — are the boring, critical parts of healthcare IT. I built and maintained the Java Spring Boot services underneath them, with Redis-backed caching on the hot read paths and Kafka-based async messaging to decouple eligibility and reporting services.",
+      "A focused pass on query optimization, indexing, and caching brought API throughput up 30%. Services were containerised with Docker and deployed to Kubernetes on AWS. Also mentored an intern end-to-end on their first production feature.",
     ],
   },
   {
     name: "Statewide Vaccination Backend",
-    tagline: "ASP.NET Core services for a statewide COVID-19 vaccination platform during peak rollout.",
+    tagline: "Python and ASP.NET Core services for a statewide COVID-19 vaccination platform during peak rollout.",
     meta: "DXC Technology · 2019–2022",
-    visit: "#",
+    github: null,
+    githubExt: null,
     body: [
-      "Ingestion, validation, and analytics workloads for a statewide vaccination platform during the period when \"can the system stay up\" was a genuine question. Wrote the backend services in ASP.NET Core, with secure authentication and encryption patterns layered in from day one.",
-      "Indexing and query work on the high-traffic read endpoints picked up about 25% throughput — modest sounding, material at the scale it was running at.",
+      "Ingestion, validation, and analytics workloads for a statewide vaccination platform during the period when 'can the system stay up' was a genuine question. Built backend services in FastAPI, Flask, and ASP.NET Core, with Celery + Redis for async task execution and secure auth layered in from day one.",
+      "Indexing and query optimisation on the high-traffic read endpoints picked up about 25% throughput — modest sounding, material at the scale it was running at.",
     ],
   },
 ]
 
 // ------------------------------------------------------------
-//  DAY JOBS  (4-up grid)
+//  DAY JOBS
 // ------------------------------------------------------------
 export const jobsIntro = {
   eyebrow: "Day Jobs",
@@ -112,43 +125,43 @@ export const jobs = [
   {
     company: "Amazon (via TEKsystems)",
     role: "Software Development Engineer II",
-    period: "2025–2026",
+    period: "Apr 2025 – Present",
     logo: { letter: "A", bg: "#FF9900" },
     accent: "#FF9900",
-    description: "Led design of a Java batch platform processing 1M+ records daily on Step Functions, Lambda, DynamoDB, and S3. Built CDK infrastructure-as-code, CloudWatch-driven SLA monitoring, and GenAI log-analysis automation integrated with ticketing. Authored an internal prompt adopted by 1K+ engineers that drives teams to 70%+ code coverage.",
-    stack: ["Java", "AWS CDK", "Step Functions", "Lambda", "DynamoDB", "S3", "TypeScript", "CloudWatch"],
+    description: "Led design of a Java batch platform processing 1M+ records daily on Step Functions, Lambda, DynamoDB, and S3. Built a RAG knowledge assistant on Amazon Bedrock with hybrid search and reranking. Engineered AI agent workflows with MCP tools for automated integration test generation. Authored an internal GenAI prompt adopted by 1K+ engineers.",
+    stack: ["Java", "Python", "AWS CDK", "Step Functions", "Lambda", "DynamoDB", "Amazon Bedrock", "RAG", "LangChain", "TypeScript"],
   },
   {
     company: "Gainwell Technologies",
     role: "Software Development Engineer",
-    period: "2022–2025",
+    period: "Jun 2022 – Mar 2025",
     logo: { letter: "G", bg: "#0F5FA8" },
     accent: "#3B82F6",
-    description: "Shipped Spring Boot microservices powering a statewide healthcare provider portal for Oklahoma. Improved API performance by 30% via query optimization, indexing, and caching. Designed relational and NoSQL schemas across MySQL and DynamoDB, and mentored an intern through their first production feature.",
-    stack: ["Java", "Spring Boot", "MySQL", "DynamoDB", "REST APIs"],
+    description: "Shipped Spring Boot microservices powering a statewide healthcare provider portal for Oklahoma. Improved API throughput 30% via query optimisation, Redis caching, and indexing. Introduced Kafka-based async messaging to decouple services. Containerised with Docker and deployed to Kubernetes on AWS.",
+    stack: ["Java 17", "Spring Boot", "Kafka", "Redis", "MySQL", "DynamoDB", "Docker", "Kubernetes"],
   },
   {
     company: "DXC Technology",
     role: "Associate Software Developer",
-    period: "2019–2022",
+    period: "Jul 2019 – Jun 2022",
     logo: { letter: "D", bg: "#5F249F" },
     accent: "#A78BFA",
-    description: "Built ASP.NET Core backend services for a statewide COVID-19 vaccination platform — ingestion, validation, analytics, and secure auth. Lifted DB performance by 25% with indexing and query tuning on high-traffic endpoints.",
-    stack: ["C#", "ASP.NET Core", "SQL", "REST APIs"],
+    description: "Built Python backend services (FastAPI, Flask) and REST APIs for internal business workflows. Developed data ingestion and processing pipelines. Implemented async task execution with Celery + Redis. Contributed to PostgreSQL schema design and query optimisation via SQLAlchemy.",
+    stack: ["Python", "FastAPI", "Flask", "Celery", "Redis", "PostgreSQL", "SQLAlchemy"],
   },
   {
     company: "University of Washington",
     role: "B.S. Computer Science",
-    period: "2015–2019",
+    period: "Sep 2015 – Jun 2019",
     logo: { letter: "W", bg: "#4B2E83" },
     accent: "#34D399",
-    description: "Undergraduate degree in Computer Science. Graduated June 2019, moving directly into full-time backend engineering work the following month.",
-    stack: ["Algorithms", "Systems", "Distributed Computing"],
+    description: "Undergraduate degree in Computer Science, Seattle. Graduated June 2019, moved directly into production backend engineering the following month.",
+    stack: ["Algorithms", "Distributed Systems", "Operating Systems"],
   },
 ]
 
 // ------------------------------------------------------------
-//  SCHOOL & HONORS
+//  SCHOOL & SKILLS
 // ------------------------------------------------------------
 export const schoolIntro = {
   eyebrow: "School & Skills",
@@ -164,20 +177,16 @@ export const degrees = [
   },
 ]
 
-// Repurposed the right column from "Honors" to "Stack" — a clean way to surface
-// your technical skills without adding a whole new section.
 export const honors = [
-  { label: "Languages",          org: "Java, Python, C#, TypeScript",                            note: "Java is home; TypeScript for IaC." },
-  { label: "Backend",             org: "Spring Boot, ASP.NET Core, Microservices, REST",          note: "Distributed systems, API-driven architectures." },
-  { label: "Cloud & DevOps",      org: "AWS (CDK, Lambda, DynamoDB, S3, Step Functions, EC2, RDS)", note: "Also Docker, Jenkins, Git." },
-  { label: "Datastores",          org: "DynamoDB, PostgreSQL, MySQL, Redis",                      note: "Schema design, indexing, migrations." },
-  { label: "Testing & Tooling",   org: "JUnit, Mockito, Integration Testing",                     note: "Observability, GenAI tooling, prompt engineering." },
+  { label: "Languages",       org: "Java, Python, SQL, TypeScript, C#",                                          note: "Java and Python are home." },
+  { label: "Backend",         org: "Spring Boot, FastAPI, Flask, Microservices, REST, Event-Driven, Kafka",      note: "Distributed systems end-to-end." },
+  { label: "GenAI & RAG",     org: "LLMs, RAG, LangChain, LlamaIndex, Bedrock, Pinecone, OpenSearch, MCP",      note: "Embeddings, hybrid search, AI agents." },
+  { label: "Cloud & DevOps",  org: "AWS (CDK, Lambda, Step Functions, DynamoDB, S3, EC2, RDS), Docker, K8s, Terraform", note: "Also Jenkins, GitHub Actions, CI/CD." },
+  { label: "Datastores",      org: "DynamoDB, PostgreSQL, MySQL, Redis",                                         note: "Schema design, indexing, migrations." },
 ]
 
 // ------------------------------------------------------------
-//  COLOPHON  (repurposed as a simple "about this site" footer)
-//  Kept the section because the design hangs together with it.
-//  You can remove it later by deleting the <Colophon /> line in App.jsx.
+//  COLOPHON
 // ------------------------------------------------------------
 export const colophonIntro = {
   eyebrow: "Colophon",
@@ -185,12 +194,11 @@ export const colophonIntro = {
   subtitle: "Built with React, Vite, and Motion. Typography is Fraunces for display, Inter for body, and JetBrains Mono for metadata. Deployed on Vercel, source on GitHub.",
 }
 
-// Simplified flow: just shows the stack, honest and quiet.
 export const colophonFlows = [
   {
-    source:  { label: "React",    color: "coral"  },
-    agent:   { label: "Vite",     color: "cream"  },
-    handoff: { label: "Vercel",   color: "cream"  },
+    source:  { label: "React",  color: "coral" },
+    agent:   { label: "Vite",   color: "cream" },
+    handoff: { label: "Vercel", color: "cream" },
     targets: ["Static build", "Global CDN", "Auto-deploy on push"],
   },
 ]
