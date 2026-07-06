@@ -242,19 +242,30 @@ function Projects() {
                 <div className="project-card__num">{String(i + 1).padStart(2, '0')}</div>
                 <div>
                   <div className="project-card__icon"><FileText size={24} strokeWidth={1.5} /></div>
+                  <div>
+                    <h3 className="display project-card__title">{current.name}</h3>
+                    <p className="project-card__tagline">{current.tagline}</p>
+                    <div className="project-card__meta">{current.meta}</div>
+                  </div>
                 </div>
-                <div style={{ gridColumn: '2 / 3' }}>
-                  <h3 className="display project-card__title">{current.name}</h3>
-                  <p className="project-card__tagline">{current.tagline}</p>
-                  <div className="project-card__meta">{current.meta}</div>
-                </div>
-                <a href={current.visit} className="btn btn--ghost project-card__visit">
-                  Visit site <ArrowUpRight size={14} />
-                </a>
               </div>
 
               <div className="project-card__body">
                 {current.body.map((para, idx) => <p key={idx}>{para}</p>)}
+                {(current.github || current.githubExt) && (
+                  <div className="project-card__links">
+                    {current.github && (
+                      <a href={current.github} target="_blank" rel="noopener noreferrer" className="btn btn--ghost">
+                        <Github size={14} /> Website + Backend
+                      </a>
+                    )}
+                    {current.githubExt && (
+                      <a href={current.githubExt} target="_blank" rel="noopener noreferrer" className="btn btn--ghost">
+                        <Github size={14} /> Chrome Extension
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             </motion.article>
           </AnimatePresence>
