@@ -407,10 +407,15 @@ h3.display { font-size: clamp(28px, 3.2vw, 44px); }
 }
 .project-card__head {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   gap: 20px;
   align-items: start;
   margin-bottom: 32px;
+}
+.project-card__head > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 .project-card__num {
   font-family: var(--font-mono);
@@ -443,8 +448,18 @@ h3.display { font-size: clamp(28px, 3.2vw, 44px); }
   text-transform: uppercase;
   color: var(--text-dim);
 }
-.project-card__visit {
-  align-self: start;
+.project-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.project-card__links .btn {
+  font-size: 13px;
+  padding: 9px 16px;
+  gap: 7px;
 }
 .project-card__body p {
   color: var(--text-muted);
